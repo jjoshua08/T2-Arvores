@@ -1,15 +1,5 @@
 # Questionário de árvores balanceadas
 
-Resultados obtidos pela execução das seis sequências, sem bibliotecas externas.
-
-Ambas as estruturas oferecem busca e inserção em O(log n). A AVL exige FB = altura(direita) − altura(esquerda) em {-1, 0, +1} em todos os nós, favorecendo buscas por seu balanceamento mais rígido. A Rubro-Negra usa restrições de cores e altura-negra, com balanceamento mais flexível, favorecendo cargas com muitas alterações. Essa orientação de escolha não garante menor tempo para toda sequência ou implementação.
-
-A altura estrutural conta nós: árvore vazia = 0 e folha = 1; NIL não conta na altura estrutural. A altura-negra informada exclui a própria raiz e inclui NIL. Cada rotação simples conta uma unidade; uma dupla conta duas. Novos nós Rubro-Negros nascem rubros; a inicialização não é recoloração. Registram-se mudanças efetivas de cor, inclusive o ajuste final da raiz.
-
-Na AVL, LL exige rotação à direita; RR à esquerda; LR à esquerda no filho seguida de direita no nó; RL à direita no filho seguida de esquerda no nó. Na Rubro-Negra, o caso 1 recolore pai e tio rubros e continua no avô; o caso 2 converte configuração interna em externa; o caso 3 recolore e rotaciona a configuração externa. Nos casos espelhados, trocam-se esquerda e direita.
-
-As cinco propriedades verificadas são: cores válidas, raiz negra, folhas NIL negras, ausência de filhos rubros de pai rubro e igualdade da altura-negra nos caminhos descendentes. Também se verificam referências de pai, ordenação BST e igualdade do percurso em ordem com as chaves esperadas. Na AVL, a validação recalcula alturas independentemente e confere alturas armazenadas e FB. Execute sem -O, pois as verificações usam assert.
-
 ## Resultados
 
 | Questão | Árvore | Altura | Rotações |
@@ -399,8 +389,3 @@ Raiz: 40 (NEGRO)
 
 **Conclusão:** a Rubro-Negra atende à carga descrita, preservando as propriedades verificadas e busca e inserção em O(log n).
 
-## Reprodução
-
-Na pasta `questionario_arvores/`, execute `python3 questoes.py` (ou `python questoes.py` onde esse comando estiver disponível).
-Para regenerar o relatório, execute `python3 questoes.py --relatorio`.
-As sequências não precisam exercitar todos os casos implementados. Nenhuma rotação é necessária quando as propriedades já são satisfeitas.
